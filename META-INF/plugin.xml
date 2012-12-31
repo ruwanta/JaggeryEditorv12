@@ -1,0 +1,62 @@
+<idea-plugin version="2">
+  <id>JaggeryEditorSupport</id>
+  <name>JaggeryEditor</name>
+  <version>2.0</version>
+  <vendor email="" url="http://jaggeryjs.org/">WSO2</vendor>
+    <depends>JavaScript</depends>
+
+    <description><![CDATA[
+     IDE support for Jaggery. Syntax highlighting, code completion and code formatting are enabled<br>
+
+      ]]></description>
+
+  <change-notes><![CDATA[
+      Code formatting for javascript part. <br>
+      variables visible among blocks of tags
+
+      ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="123.72"/>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+
+  <!--<depends>com.intellij.modules.lang</depends>-->
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+        <fileTypeFactory implementation="org.wso2.fileType.JaggeryFileTypeFactory"/>
+        <lang.parserDefinition implementationClass="org.wso2.psi.JaggeryParserDefinition" language="jaggery"/>
+
+        <lang.fileViewProviderFactory language="jaggery"
+                                      implementationClass="org.wso2.fileType.JaggeryFileViewProviderFactory"/>
+
+        <resolveScopeEnlarger implementation="org.wso2.fileType.JaggeryScopeEnlarger"/>
+        <lang.formatter implementationClass="org.wso2.fileType.JaggeryFormattingModelBuilder" language="jaggery"></lang.formatter>
+
+    </extensions>
+
+    <extensions defaultExtensionNs="JavaScript">
+
+        <predefinedLibraryProvider implementation="org.wso2.fileType.JagPredefinedLibrary"/>
+
+        <indexedFileTypeProvider implementation="org.wso2.fileType.indexedFileType"/>
+
+
+
+    </extensions>
+</idea-plugin>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_jaggeryeditorv12" default="compile.module.jaggeryeditorv12">
+  <dirname property="module.jaggeryeditorv12.basedir" file="${ant.file.module_jaggeryeditorv12}"/>
+  
+  <property name="module.jdk.home.jaggeryeditorv12" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.jaggeryeditorv12" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.jaggeryeditorv12" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.jaggeryeditorv12" value="${compiler.args}"/>
+  
+  <property name="jaggeryeditorv12.output.dir" value="${module.jaggeryeditorv12.basedir}/out/production/JaggeryEditorv12"/>
+  <property name="jaggeryeditorv12.testoutput.dir" value="${module.jaggeryeditorv12.basedir}/out/test/JaggeryEditorv12"/>
+  
+  <path id="jaggeryeditorv12.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="jaggeryeditorv12.module.production.classpath">
+    <path refid="${module.jdk.classpath.jaggeryeditorv12}"/>
+  </path>
+  
+  <path id="jaggeryeditorv12.runtime.production.module.classpath">
+    <pathelement location="${jaggeryeditorv12.output.dir}"/>
+  </path>
+  
+  <path id="jaggeryeditorv12.module.classpath">
+    <path refid="${module.jdk.classpath.jaggeryeditorv12}"/>
+    <pathelement location="${jaggeryeditorv12.output.dir}"/>
+  </path>
+  
+  <path id="jaggeryeditorv12.runtime.module.classpath">
+    <pathelement location="${jaggeryeditorv12.testoutput.dir}"/>
+    <pathelement location="${jaggeryeditorv12.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.jaggeryeditorv12">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.jaggeryeditorv12">
+    <patternset refid="excluded.from.module.jaggeryeditorv12"/>
+  </patternset>
+  
+  <path id="jaggeryeditorv12.module.sourcepath">
+    <dirset dir="${module.jaggeryeditorv12.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.jaggeryeditorv12" depends="compile.module.jaggeryeditorv12.production,compile.module.jaggeryeditorv12.tests" description="Compile module JaggeryEditorv12"/>
+  
+  <target name="compile.module.jaggeryeditorv12.production" depends="register.custom.compilers" description="Compile module JaggeryEditorv12; production classes">
+    <mkdir dir="${jaggeryeditorv12.output.dir}"/>
+    <javac2 destdir="${jaggeryeditorv12.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jaggeryeditorv12}/javac">
+      <compilerarg line="${compiler.args.jaggeryeditorv12}"/>
+      <bootclasspath refid="jaggeryeditorv12.module.bootclasspath"/>
+      <classpath refid="jaggeryeditorv12.module.production.classpath"/>
+      <src refid="jaggeryeditorv12.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.jaggeryeditorv12"/>
+    </javac2>
+    
+    <copy todir="${jaggeryeditorv12.output.dir}">
+      <fileset dir="${module.jaggeryeditorv12.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.jaggeryeditorv12.tests" depends="register.custom.compilers,compile.module.jaggeryeditorv12.production" description="compile module JaggeryEditorv12; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.jaggeryeditorv12" description="cleanup module">
+    <delete dir="${jaggeryeditorv12.output.dir}"/>
+    <delete dir="${jaggeryeditorv12.testoutput.dir}"/>
+  </target>
+  
+  <property name="jaggeryeditorv12.plugin.path.jar" value="${module.jaggeryeditorv12.basedir}/JaggeryEditorv12.jar"/>
+  
+  <!-- Build archive for plugin 'JaggeryEditorv12' -->
+  <target name="plugin.build.jar.jaggeryeditorv12" depends="compile.module.jaggeryeditorv12" description="Build plugin archive for module &#39;JaggeryEditorv12&#39;">
+    <jar destfile="${jaggeryeditorv12.plugin.path.jar}" duplicate="preserve">
+      <zipfileset dir="${module.jaggeryeditorv12.basedir}/out/production/JaggeryEditorv12"/>
+      <zipfileset file="${module.jaggeryeditorv12.basedir}/META-INF/plugin.xml" prefix="META-INF"/>
+      <manifest>
+        <attribute name="Created-By" value="IntelliJ IDEA"/>
+        <attribute name="Manifest-Version" value="1.0"/>
+      </manifest>
+    </jar>
+  </target>
+</project>
