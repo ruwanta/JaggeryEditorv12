@@ -22,7 +22,6 @@ public class HighlighterFactory extends SingleLazyInstanceSyntaxHighlighterFacto
 
         } catch (Exception e) {
 
-            System.out.println("message is " + e.getMessage());
             return null;
 
         }

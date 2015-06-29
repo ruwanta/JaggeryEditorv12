@@ -3,7 +3,7 @@
   <name>JaggeryEditor</name>
   <version>2.0</version>
   <vendor email="" url="http://jaggeryjs.org/">WSO2</vendor>
-    <depends>JavaScript</depends>
+    <!--<depends>JavaScript</depends>-->
 
     <description><![CDATA[
      IDE support for Jaggery. Syntax highlighting, code completion and code formatting are enabled<br>
@@ -52,9 +52,9 @@
 
     <extensions defaultExtensionNs="JavaScript">
 
-        <predefinedLibraryProvider implementation="org.wso2.fileType.JagPredefinedLibrary"/>
+        <!--<predefinedLibraryProvider implementation="org.wso2.fileType.JagPredefinedLibrary"/>-->
 
-        <indexedFileTypeProvider implementation="org.wso2.fileType.indexedFileType"/>
+        <!--<indexedFileTypeProvider implementation="org.wso2.fileType.indexedFileType"/>-->
 
 
 

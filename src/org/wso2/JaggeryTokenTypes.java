@@ -1,7 +1,6 @@
 package org.wso2;
 
 
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.templateLanguages.TemplateDataElementType;
 import com.intellij.psi.tree.IElementType;
@@ -9,8 +8,7 @@ import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
 
 import org.wso2.fileType.JaggeryLanguage;
-import org.wso2.psi.Ilazy;
-
+import org.wso2.fileType.JavascriptLanguage;
 
 public interface JaggeryTokenTypes {
 
@@ -23,9 +21,8 @@ public interface JaggeryTokenTypes {
 
     public static final IElementType OUTER_ELEMENT_TYPE = new JaggeryElementType("OUTER_ELEMENT_TYPE");    //outer element type that is under html
 
-   // public static final Ilazy JAVASCRIPT_TEXT = new Ilazy("JavascriptContent", StdFileTypes.JS.getLanguage());
-
-    public static final IElementType JAVASCRIPT_TEXT = new JaggeryElementType("TEMPLATE_JAVASCRIPT_TEXT");
+    public static final IElementType JAVASCRIPT_TEXT =  new JavascriptElementType("JavascriptContent",
+            JavascriptLanguage.INSTANCE);
 
     public static TemplateDataElementType TEMPLATE_DATA =
 
